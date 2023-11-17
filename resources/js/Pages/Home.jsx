@@ -4,6 +4,8 @@ import Card from "@/Components/Card";
 <Head title="Blog" />
 
 export default function Home({ articles }) {
+    
+    const articlesList = articles.map(article =>  <li className="py-12"> <Card title={article.title} /> </li>)
     return (
         <MainLayout>
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -12,24 +14,7 @@ export default function Home({ articles }) {
                         Latest Blogs
                     </h1>
                     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                        <li className="py-12">
-                            <Card />
-                        </li>
-                        <li className="py-12">
-                            <Card />
-                        </li>
-                        <li className="py-12">
-                            <Card />
-                        </li>
-                        <li className="py-12">
-                            <Card />
-                        </li>
-                        <li className="py-12">
-                            <Card />
-                        </li>
-                        <li className="py-12">
-                            <Card />
-                        </li>
+                        {articlesList}
                     </ul>
                 </div>
             </div>

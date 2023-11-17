@@ -15,7 +15,7 @@ export default function Card({ title, description, imgSrc, href })  {
                     <div className="space-y-6">
                         <div>
                             <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                                <Link className="text-gray-900 dark:text-gray-100" href="/blog/generating-structured-output-from-llms">Generating Structured Output from LLMs</Link>
+                                <Link className="text-gray-900 dark:text-gray-100" href="/blog/generating-structured-output-from-llms">{title}</Link>
                             </h2>
                             <div className="flex flex-wrap">
                                 <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href="/tags/data-science">data-science</Link>

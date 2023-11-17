@@ -24,9 +24,9 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
+            'title' => fake()->text(6),
             'image' => fake()->image(),
-            'user_id' => User::factory(),
+            // 'user_id' => User::factory(),
             'category_id' => Category::factory(),
         ];
     }
