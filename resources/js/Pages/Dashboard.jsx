@@ -10,6 +10,7 @@ import {
 } from "@/Components/cn/Card"
 
 export default function Dashboard({ auth }) {
+    console.log(auth);
     return (
         <AuthenticatedLayout
             user={auth.user}

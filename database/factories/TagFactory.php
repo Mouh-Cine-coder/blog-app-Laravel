@@ -19,7 +19,7 @@ class TagFactory extends Factory
     {
         $tags = array('API', 'NEXTjs', 'Laravel', 'React', 'POLITICS');
         return [
-            'name' => array_rand($tags)
+            'name' => $tags[array_rand($tags)]
         ];
     }
 }
