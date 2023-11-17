@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 
-export default function Card({ title, description, imgSrc, href })  {
+export default function Card({ title, description, imgSrc, href, tags })  {
     // i didn't change the colors for hovering the tags when it is not dark mode, to be implemented in the future
     return (
         <article>
@@ -18,10 +18,9 @@ export default function Card({ title, description, imgSrc, href })  {
                                 <Link className="text-gray-900 dark:text-gray-100" href="/blog/generating-structured-output-from-llms">{title}</Link>
                             </h2>
                             <div className="flex flex-wrap">
-                                <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href="/tags/data-science">data-science</Link>
-                                <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href="/tags/llm">llm</Link>
-                                <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href="/tags/generative-ai">generative-ai</Link>
-                                <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href="/tags/notes">notes</Link>
+                                {tags.map(tag => (
+                                    <Link className="mr-3 text-sm font-medium uppercase text-blue-300 hover:text-primary-600 dark:hover:text-blue-500" href={`/tags/${tag.name}`}>{tag.name}</Link>
+                                ))}
                             </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">

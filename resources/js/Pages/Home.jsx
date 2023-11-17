@@ -4,8 +4,7 @@ import Card from "@/Components/Card";
 <Head title="Blog" />
 
 export default function Home({ articles }) {
-    
-    const articlesList = articles.map(article =>  <li className="py-12"> <Card title={article.title} /> </li>)
+    const articlesList = articles.map(article =>  <li className="py-12"> <Card title={article.title} tags={article.tags} /> </li>)
     return (
         <MainLayout>
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
