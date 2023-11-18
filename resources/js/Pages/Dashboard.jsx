@@ -66,15 +66,14 @@ import {
   ]
 
 export default function Dashboard({ auth }) {
-    console.log(auth);
     return (
         <AuthenticatedLayout
             user={auth.user}
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div className="py-12 w-full">
+                <div className="mx-auto sm:px-6 lg:px-8">
                     <div className="text-gray-800 dark:text-gray-200 overflow-hidden shadow-sm sm:rounded-lg p-4">
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                             <Card>

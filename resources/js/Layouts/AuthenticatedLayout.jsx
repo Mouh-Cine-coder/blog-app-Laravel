@@ -123,7 +123,7 @@ export default function Authenticated({ user, header, children }) {
             <div className='flex'>
             <Sidebar/>
 
-<main>{children}</main>
+            {children}
             </div>
         </div>
     );
