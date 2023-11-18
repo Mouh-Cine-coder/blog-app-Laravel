@@ -66,6 +66,7 @@ import {
   ]
 
 export default function Dashboard({ auth }) {
+    console.log(auth);
     return (
         <AuthenticatedLayout
             user={auth.user}
