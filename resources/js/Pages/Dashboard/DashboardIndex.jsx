@@ -65,7 +65,7 @@ import {
     },
   ]
 
-export default function Dashboard({ auth }) {
+export default function DashboardIndex({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}

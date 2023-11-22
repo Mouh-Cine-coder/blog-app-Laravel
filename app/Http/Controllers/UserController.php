@@ -14,11 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('user', 'category')->take(5)->get();
+        $users = Article::all();
         
-        return Inertia::render('Dashboard', [
-            'articles' => $articles
-        ]);
+        // return Inertia::render('Dashboard', [
+        //     'users' => $users
+        // ]);
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Models\Article;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,11 +34,11 @@ Route::get('/welcome', function() {
 });
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::name('admin.')->middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('articles', ArticleController::class);
+    Route::resource('users', UserController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

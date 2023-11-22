@@ -33,7 +33,7 @@ function UserDropdown({user}) {
                         {user.email}
                     </span>
                 </div>
-                <Dropdown.Link href="/dashboard">Dashboard</Dropdown.Link>
+                <Dropdown.Link href={route('admin.articles.index')}>Dashboard</Dropdown.Link>
                 <Dropdown.Link href="/settings">Settings</Dropdown.Link>
                 <Dropdown.Link href={route('logout')} method="post" as="button">Sign out</Dropdown.Link>
             </Dropdown.Content>
