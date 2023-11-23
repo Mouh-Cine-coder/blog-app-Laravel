@@ -83,12 +83,12 @@ function SidebarContent() {
   let routes = [
     {
       name: "Articles",
-      path: "/articles",
+      path: route('articles.index'),
       exact: true,
     },
     {
       name: "Users",
-      path: "/users",
+      path: route('admin.users.index'),
       exact: true,
     },
   ];

@@ -1,7 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import Dropdown from "@/Components/Dropdown";
 import DangerButton from "@/Components/DangerButton";
+
 
 import {
     Card,
@@ -33,8 +34,15 @@ export default function DashboardIndex({ auth, articles }) {
 
             <div className="py-12 w-full h-screen overflow-y-scroll">
                 <div className="mx-auto sm:px-6 lg:px-8">
+                    <Link 
+                        href={route('articles.create')}
+                        className="text-white float-right bg-lime-600 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-lime-600 dark:hover:bg-lime-700 focus:outline-none dark:focus:outline-none"
+                        >
+                        Add article &#43;
+                    </Link>
                     <div className="text-gray-800 dark:text-gray-200 overflow-hidden shadow-sm sm:rounded-lg p-4">
                         {/* statistic cards */}
+
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -65,8 +73,6 @@ export default function DashboardIndex({ auth, articles }) {
                                     </p>
                                 </CardContent>
                             </Card>
-
-                            
 
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

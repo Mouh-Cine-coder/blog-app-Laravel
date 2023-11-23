@@ -35,10 +35,17 @@ Route::get('/welcome', function() {
 
 
 
-Route::name('admin.')->middleware(['auth', 'isAdmin'])->group(function () {
+// admin and user has access to articles
+Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
+    
     Route::resource('articles', ArticleController::class);
-    Route::resource('users', UserController::class);
+    Route::name('admin.')->middleware(['isAdmin'])->group(function () {
+        Route::resource('users', UserController::class);
+    });
+
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
