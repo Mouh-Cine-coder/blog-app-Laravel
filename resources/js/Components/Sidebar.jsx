@@ -83,12 +83,12 @@ function SidebarContent() {
   let routes = [
     {
       name: "Articles",
-      path: route('admin.articles.index'),
+      path: "/articles",
       exact: true,
     },
     {
       name: "Users",
-      path: route('admin.users.index'),
+      path: "/users",
       exact: true,
     },
   ];
@@ -101,12 +101,12 @@ function SidebarContent() {
           ) : (
             <li className="relative px-6 py-3" key={route.name}>
               <a
-                exact
+                exact={route.exact.toString()}
                 href={route.path}
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                activeClassName="text-gray-800 dark:text-gray-100"
+                activeclassname="text-gray-800 dark:text-gray-100"
               >
-                <Route path={route.path} exact={route.exact}>
+                <Route path={route.path} exact={route.exact.toString()}>
                   <span
                     className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                     aria-hidden="true"

@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('tags', 'category')->take(5)->latest()->get();
+        $articles = Article::with('tags', 'category', 'user')->take(5)->latest()->get();
 
         return Inertia::render('Dashboard/DashboardIndex', [
             'articles' => $articles

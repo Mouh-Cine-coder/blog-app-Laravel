@@ -1,5 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
+import Dropdown from "@/Components/Dropdown";
+import DangerButton from "@/Components/DangerButton";
 
 import {
     Card,
@@ -20,89 +22,20 @@ import {
     TableRow,
   } from "@/Components/cn/Table"
    
-  const invoices = [
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-  ]
 
-export default function DashboardIndex({ auth }) {
+export default function DashboardIndex({ auth, articles }) {
+    console.log(articles);
     return (
         <AuthenticatedLayout
             user={auth.user}
         >
             <Head title="Dashboard" />
 
-            <div className="py-12 w-full">
+            <div className="py-12 w-full h-screen overflow-y-scroll">
                 <div className="mx-auto sm:px-6 lg:px-8">
                     <div className="text-gray-800 dark:text-gray-200 overflow-hidden shadow-sm sm:rounded-lg p-4">
+                        {/* statistic cards */}
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                            <Card>
-                                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">
-                                        Total Revenue
-                                    </CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                    </svg>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-2xl font-bold">
-                                        $45,231.89
-                                    </div>
-                                    <p className="text-xs text-muted-foreground">
-                                        +20.1% from last month
-                                    </p>
-                                </CardContent>
-                            </Card>
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                     <CardTitle className="text-sm font-medium">
@@ -132,40 +65,9 @@ export default function DashboardIndex({ auth }) {
                                     </p>
                                 </CardContent>
                             </Card>
-                            <Card>
-                                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">
-                                        Sales
-                                    </CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <rect
-                                            width="20"
-                                            height="14"
-                                            x="2"
-                                            y="5"
-                                            rx="2"
-                                        />
-                                        <path d="M2 10h20" />
-                                    </svg>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-2xl font-bold">
-                                        +12,234
-                                    </div>
-                                    <p className="text-xs text-muted-foreground">
-                                        +19% from last month
-                                    </p>
-                                </CardContent>
-                            </Card>
+
+                            
+
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                     <CardTitle className="text-sm font-medium">
@@ -195,48 +97,53 @@ export default function DashboardIndex({ auth }) {
                             </Card>
                         </div>
 
-                        <Table>
-                            <TableCaption>
-                                A list of your recent invoices.
-                            </TableCaption>
+                        <Table className="mt-3 h-fit overflow-y-scroll">
                             <TableHeader>
                                 <TableRow>
-                                    <TableHead className="w-[100px]">
-                                        Invoice
-                                    </TableHead>
-                                    <TableHead>Status</TableHead>
-                                    <TableHead>Method</TableHead>
-                                    <TableHead className="text-right">
-                                        Amount
-                                    </TableHead>
+                                    <TableHead className="w-[50px]">#</TableHead>
+                                    <TableHead>title</TableHead>
+                                    <TableHead>writer</TableHead>
+                                    <TableHead>catergory</TableHead>
+                                    <TableHead>created at</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {invoices.map((invoice) => (
-                                    <TableRow key={invoice.invoice}>
+                                {articles.map((article) => (
+                                    <TableRow key={article.id}>
                                         <TableCell className="font-medium">
-                                            {invoice.invoice}
+                                            {article.id}
                                         </TableCell>
                                         <TableCell>
-                                            {invoice.paymentStatus}
+                                            {article.title}
                                         </TableCell>
                                         <TableCell>
-                                            {invoice.paymentMethod}
+                                            {article.user.name}
                                         </TableCell>
-                                        <TableCell className="text-right">
-                                            {invoice.totalAmount}
+                                        <TableCell>
+                                            {article.category.name}
+                                        </TableCell>
+                                        <TableCell>
+                                            {article.created_at.slice(0, 10)}
+                                        </TableCell>
+                                        <TableCell>
+                                            <Dropdown>
+                                                <Dropdown.Trigger>
+                                                    <div className="cursor-pointer text-lg font-bold text-slate-200">
+                                                        ...
+                                                    </div>
+                                                </Dropdown.Trigger>
+
+                                                <Dropdown.Content align="left" contentClasses="py-0 max-w-fit bg-white dark:bg-gray-700">
+                                                    <Dropdown.Link>Edit</Dropdown.Link>
+                                                    {/* implment a model here */}
+                                                    <DangerButton className="rounded-t-none w-full">Delete</DangerButton>
+                                                </Dropdown.Content>
+                                            </Dropdown>
                                         </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
-                            <TableFooter>
-                                <TableRow>
-                                    <TableCell colSpan={3}>Total</TableCell>
-                                    <TableCell className="text-right">
-                                        $2,500.00
-                                    </TableCell>
-                                </TableRow>
-                            </TableFooter>
+                            {/* <TableFooter></TableFooter> */}
                         </Table>
                     </div>
                 </div>
